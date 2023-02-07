@@ -79,6 +79,11 @@ h1 {
   border-color: #f59f01;
 }
 
+.temp-system a.active {
+  color: #484d5a;
+  cursor: default;
+}
+
 .info p,
 .temperature p {
   margin: 0;

@@ -1,4 +1,4 @@
-// Challenge - Week 4
+// variables
 let date = new Date();
 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -12,28 +12,41 @@ let searchInput = document.querySelector("#search-box");
 let currentCity = document.querySelector("#city");
 
 let tempFahrenheit = document.querySelector("#to-f");
+let fahrenheitTemp = null;
 let tempCelsius = document.querySelector("#to-c");
-tempCelsius.addEventListener("click", toCelsius);
-tempFahrenheit.addEventListener("click", toFahrenheit);
 
 let currentTemperature = document.querySelector("#temperature");
-let tempNum = parseInt(currentTemperature.innerHTML);
+let apiKey = "b2ef35a4ca3a9550a2888bed0b3cf675";
+
+let currentButton = document.querySelector("#current-temp");
+let form = document.querySelector("#search-form");
+
+// Event Listeners
+tempCelsius.addEventListener("click", toCelsius);
+tempFahrenheit.addEventListener("click", toFahrenheit);
+currentButton.addEventListener("click", getGeoPosition);
+form.addEventListener("submit", showCity);
+
+// Functions
 
 function toCelsius() {
-  let result = Math.round((tempNum - 32) * (5 / 9));
+  // let tempNum = parseInt(currentTemperature.innerHTML);
+  let result = Math.round((fahrenheitTemp - 32) * (5 / 9));
   currentTemperature.innerHTML = result;
+
+  let active = document.querySelector(".units a.active");
+  active.classList.remove("active");
+  tempCelsius.classList.add("active");
 }
 
 function toFahrenheit() {
   console.log(currentTemperature.innerHTML);
-  currentTemperature.innerHTML = tempNum;
+  currentTemperature.innerHTML = fahrenheitTemp;
+
+  let active = document.querySelector(".units a.active");
+  active.classList.remove("active");
+  tempFahrenheit.classList.add("active");
 }
-
-// Challenge - Week 5
-let apiKey = "b2ef35a4ca3a9550a2888bed0b3cf675";
-
-let currentButton = document.querySelector("#current-temp");
-currentButton.addEventListener("click", getGeoPosition);
 
 function getGeoPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -42,15 +55,14 @@ function getGeoPosition() {
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let units = "metric";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(getWeatherData);
+  axios.get(apiUrl).then(displayWeatherData);
 }
 
-function getWeatherData(response) {
-  console.log(response);
-
+function displayWeatherData(response) {
   let currentTemp = Math.round(response.data.main.temp);
+  fahrenheitTemp = currentTemp;
   let currentName = response.data.name;
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
@@ -62,18 +74,21 @@ function getWeatherData(response) {
   document.querySelector(".temperature .main-weather").innerHTML = weather;
   currentTemperature.innerHTML = currentTemp;
   currentCity.innerHTML = currentName;
-  console.log(weather);
 }
 
 function showCity(event) {
   event.preventDefault();
   if (searchInput.value) {
     let city = searchInput.value;
-    let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(getWeatherData);
+    search(city);
   }
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", showCity);
+function search(city) {
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayWeatherData);
+}
+
+// Call / Test
+search("Jacksonville");
