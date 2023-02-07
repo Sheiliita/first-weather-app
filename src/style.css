@@ -1,0 +1,145 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: #484d5a;
+  background: linear-gradient(109.6deg, rgba(220, 196, 252, 0.3) 11.2%, rgba(150, 199, 253, 0.3) 100.2%);
+}
+
+section {
+  height: 100vh;
+}
+.col8 {
+  overflow: hidden;
+}
+
+#card-header {
+  text-align: center;
+  background-image: linear-gradient(#e1f0fc80, #e0ecf785), url("../images/cloudysky.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #d9edfd;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+h1 {
+  font-weight: 500;
+  font-size: 25px;
+  color: white;
+  font-style: italic;
+}
+.form-outline {
+  margin-top: -30px;
+}
+#form-style {
+  flex-flow: row nowrap;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.child1 {
+  flex: 0 1 80%;
+  width: 80%;
+  position: relative;
+}
+#search-box {
+  background: #d9edfd;
+  border: none;
+  border-radius: 50px;
+  height: 50px;
+  padding: 0 20px;
+}
+#search-city {
+  position: absolute;
+  border-radius: 50px;
+  height: 50px;
+  padding: 0 20px;
+  right: 0;
+  background-color: #56a0ee;
+  border-color: #56a0ee;
+}
+#search-city:hover {
+  cursor: pointer;
+  background-color: #197fec;
+  border-color: #4296f0;
+}
+#current-temp {
+  border-radius: 50px;
+  height: 50px;
+  padding: 0 20px;
+  background-color: #f5ab23;
+  border-color: #ffa500a8;
+}
+#current-temp:hover {
+  cursor: pointer;
+  background-color: #f59f01;
+  border-color: #f59f01;
+}
+
+.info p,
+.temperature p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3em;
+}
+p.heading {
+  font-size: 28px;
+  font-weight: 600;
+}
+p.temperature-number,
+.icon p {
+  font-size: 175px;
+  line-height: 0.9em;
+}
+p.temperature-number {
+  font-size: clamp(40px, 30vw, 130px);
+}
+
+.temp-boxes .card-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+.temp-box {
+  background: #d9edfd;
+  border: none;
+  border-radius: 20px;
+}
+
+p.card-title,
+.card-text {
+  margin: 0;
+  font-size: 20px;
+}
+.card-title {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.card-icon img {
+  font-size: 50px;
+  margin: 0;
+  height: 80px;
+}
+
+a {
+  text-decoration: none;
+  font-style: italic;
+  color: #56a0ee;
+}
+
+a:hover {
+  cursor: pointer;
+  color: #9856ee;
+}
+
+.temperature {
+  position: relative;
+}
+.temp-system {
+  position: absolute;
+  left: 180px;
+  top: -15px;
+}

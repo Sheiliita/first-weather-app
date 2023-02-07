@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Weather App</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://kit.fontawesome.com/5ecb0613d5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <section id="weather">
+      <div class="container h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-8">
+            <div class="card shadow rounded" id="weather-card">
+              <div id="card-header">
+                <h1>Weather App</h1>
+              </div>
+
+              <div id="card-body" class="p-lg-5 pt-lg-0 p-3 pt-0 pb-3">
+                <div class="form-outline">
+                  <form id="search-form" action="" class="text-center">
+                    <div id="form-style">
+                      <div class="child1">
+                        <input type="search" id="search-box" class="search-form mx-auto w-100" placeholder="🔍Enter city..." />
+                        <button id="search-city" class="btn btn-primary" type="submit">Search</button>
+                      </div>
+                      <div class="child2">
+                        <button id="current-temp" class="btn btn-success">Current</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="info mt-3 text-center" id="current-conditions">
+                  <p class="heading" id="city">New York City, NY</p>
+                  <p class="date" id="day">Thursday 2:00PM</p>
+                  <p class="features">Humidity: 82% • Wind: 7 mph</p>
+                </div>
+                <div class="row mt-4 justify-content-center align-items-center">
+                  <div class="col order-2 order-sm-1 text-center text-sm-start temperature">
+                    <div class="temp-system">
+                      <a id="to-f" href="#">°F</a>
+                      <span>|</span>
+                      <a id="to-c" href="#">°C</a>
+                    </div>
+                    <p class="temperature-number" id="temperature">47</p>
+
+                    <p class="main-weather">Cloudy</p>
+                    <p class="min-max">Min 52° • Max 51°</p>
+                  </div>
+                  <div class="col order-1 order-sm-2 icon text-center text-sm-end align-items-center">
+                    <lord-icon src="https://cdn.lordicon.com/qrodhbts.json" trigger="hover" colors="primary:#d9edfd" style="width: 250px; height: 250px"> </lord-icon>
+                  </div>
+                </div>
+
+                <div class="row temp-boxes gap-1 gap-lg-3 mt-4 ms-0 me-0 justify-content-center justify-content-md-between text-center">
+                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">Today</h5>
+                      <div class="card-icon">
+                        <img src="images/rainy2.svg" alt="Rainy day" />
+                      </div>
+                      <p class="card-text">52° / 51°</p>
+                    </div>
+                  </div>
+                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">Friday</h5>
+                      <div class="card-icon">
+                        <img src="images/cloudy-day.svg" alt="Cloudy" />
+                      </div>
+                      <p class="card-text">56° / 33°</p>
+                    </div>
+                  </div>
+                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">Saturday</h5>
+                      <div class="card-icon">
+                        <img src="images/cloudy1.svg" alt="Cloudy day" />
+                      </div>
+                      <p class="card-text">39° / 30°</p>
+                    </div>
+                  </div>
+                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">Sunday</h5>
+                      <div class="card-icon">
+                        <img src="images/clear-day.svg" alt="Clear day" />
+                      </div>
+                      <p class="card-text">42° / 30°</p>
+                    </div>
+                  </div>
+                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">Monday</h5>
+                      <div class="card-icon">
+                        <img src="images/clear-day.svg" alt="Clear day" />
+                      </div>
+                      <p class="card-text">47° / 34°</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="card-footer" class="ps-5 pe-5">
+                <hr class="mx-auto" />
+                <p class="text-center fs-6">
+                  This was coded by <span> <a href="https://www.shecodes.io/graduates/66604-sheila-sanchez" target="_blank">Sheila Sanchez</a></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+    <script src="/src/script.js"></script>
+  </body>
+</html>
