@@ -52,6 +52,10 @@ h1 {
   height: 50px;
   padding: 0 20px;
 }
+#search-box:focus-visible {
+  border: none;
+  outline: none;
+}
 #search-city {
   position: absolute;
   border-radius: 50px;
