@@ -124,7 +124,8 @@ p.card-title,
 }
 .card-title {
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .card-icon img {

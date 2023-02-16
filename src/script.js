@@ -92,3 +92,28 @@ function search(city) {
 
 // Call / Test
 search("Jacksonville");
+
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+
+  days.forEach(function (day) {
+    forecastHTML += `
+    <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">${day}</h5>
+        <div class="card-icon">
+          <img src="images/rainy2.svg" alt="Rainy day" />
+        </div>
+        <p class="card-text">52° / 51°</p>
+      </div>
+    </div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+displayForecast();
