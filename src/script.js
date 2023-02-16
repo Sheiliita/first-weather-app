@@ -74,6 +74,17 @@ function displayWeatherData(response) {
   document.querySelector(".temperature .main-weather").innerHTML = weather;
   currentTemperature.innerHTML = currentTemp;
   currentCity.innerHTML = currentName;
+
+  getForecast(response.data.coord);
+  // get coordinates from api response
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let units = "imperial";
+  var apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showCity(event) {
@@ -98,10 +109,10 @@ search("Jacksonville");
 // ******************************
 // ******************************
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-
+  console.log(response.data);
   days.forEach(function (day) {
     forecastHTML += `
     <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
@@ -116,4 +127,3 @@ function displayForecast() {
     forecastElement.innerHTML = forecastHTML;
   });
 }
-displayForecast();
