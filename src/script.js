@@ -109,21 +109,33 @@ search("Jacksonville");
 // ******************************
 // ******************************
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  console.log(response.data);
-  days.forEach(function (day) {
-    forecastHTML += `
+  console.log(response.data.daily);
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `
     <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
       <div class="card-body">
-        <h5 class="card-title">${day}</h5>
+        <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
         <div class="card-icon">
-          <img src="images/rainy2.svg" alt="Rainy day" />
+        <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" />
+          
         </div>
-        <p class="card-text">52° / 51°</p>
+        <p class="card-text">${Math.round(forecastDay.temp.max)}° / ${Math.round(forecastDay.temp.min)}°</p>
       </div>
     </div>`;
-    forecastElement.innerHTML = forecastHTML;
+      forecastElement.innerHTML = forecastHTML;
+    }
   });
 }
