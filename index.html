@@ -18,7 +18,7 @@
     <section id="weather">
       <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-          <div class="col-12 col-lg-8">
+          <div class="col-12 col-lg-10 col-xl-8">
             <div class="card shadow rounded" id="weather-card">
               <div id="card-header">
                 <h1>Weather App</h1>
@@ -47,65 +47,22 @@
                 <div class="row mt-4 justify-content-center align-items-center">
                   <div class="col order-2 order-sm-1 text-center text-sm-start temperature">
                     <div class="temp-system">
-                      <span class="units"><a id="to-f" class="active" href="#">°F</a> | <a id="to-c" href="#">°C</a></span>
+                      <span class="units"
+                        ><a id="to-f" class="active" href="#">°F</a>
+                        <!-- <a id="to-c" href="#">°C</a>-->
+                      </span>
                     </div>
                     <p class="temperature-number" id="temperature">47</p>
 
                     <p class="main-weather">Cloudy</p>
                     <p class="min-max">Min 52° • Max 51°</p>
                   </div>
-                  <div class="col order-1 order-sm-2 icon text-center text-sm-end align-items-center">
+                  <div class="col order-1 order-sm-2 icon text-center text-sm-end align-items-center" id="main-icon">
                     <lord-icon src="https://cdn.lordicon.com/qrodhbts.json" trigger="hover" colors="primary:#d9edfd" style="width: 250px; height: 250px"> </lord-icon>
                   </div>
                 </div>
 
-                <div class="row temp-boxes gap-1 gap-lg-3 mt-4 ms-0 me-0 justify-content-center justify-content-md-between text-center" id="forecast">
-                  <!-- <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
-                    <div class="card-body">
-                      <h5 class="card-title">Today</h5>
-                      <div class="card-icon">
-                        <img src="images/rainy2.svg" alt="Rainy day" />
-                      </div>
-                      <p class="card-text">52° / 51°</p>
-                    </div>
-                  </div>
-                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
-                    <div class="card-body">
-                      <h5 class="card-title">Friday</h5>
-                      <div class="card-icon">
-                        <img src="images/cloudy-day.svg" alt="Cloudy" />
-                      </div>
-                      <p class="card-text">56° / 33°</p>
-                    </div>
-                  </div>
-                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
-                    <div class="card-body">
-                      <h5 class="card-title">Saturday</h5>
-                      <div class="card-icon">
-                        <img src="images/cloudy1.svg" alt="Cloudy day" />
-                      </div>
-                      <p class="card-text">39° / 30°</p>
-                    </div>
-                  </div>
-                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
-                    <div class="card-body">
-                      <h5 class="card-title">Sunday</h5>
-                      <div class="card-icon">
-                        <img src="images/clear-day.svg" alt="Clear day" />
-                      </div>
-                      <p class="card-text">42° / 30°</p>
-                    </div>
-                  </div>
-                  <div class="temp-box col-md-2 col-sm-5 col-xs-5 col-5 card mb-3 shadow-sm">
-                    <div class="card-body">
-                      <h5 class="card-title">Monday</h5>
-                      <div class="card-icon">
-                        <img src="images/clear-day.svg" alt="Clear day" />
-                      </div>
-                      <p class="card-text">47° / 34°</p>
-                    </div>
-                  </div>-->
-                </div>
+                <div class="row temp-boxes gap-1 gap-lg-3 mt-4 ms-0 me-0 justify-content-center justify-content-md-between text-center" id="forecast"></div>
               </div>
               <div id="card-footer" class="ps-5 pe-5">
                 <hr class="mx-auto" />

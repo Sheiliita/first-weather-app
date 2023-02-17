@@ -22,8 +22,8 @@ let currentButton = document.querySelector("#current-temp");
 let form = document.querySelector("#search-form");
 
 // Event Listeners
-tempCelsius.addEventListener("click", toCelsius);
-tempFahrenheit.addEventListener("click", toFahrenheit);
+// tempCelsius.addEventListener("click", toCelsius);
+// tempFahrenheit.addEventListener("click", toFahrenheit);
 currentButton.addEventListener("click", getGeoPosition);
 form.addEventListener("submit", showCity);
 
@@ -69,6 +69,9 @@ function displayWeatherData(response) {
   let weather = response.data.weather[0].main;
   let tempMin = Math.round(response.data.main.temp_min);
   let tempMax = Math.round(response.data.main.temp_max);
+  let mainIcon = document.querySelector("#main-icon");
+
+  mainIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png" alt="" />`;
   document.querySelector(".min-max").innerHTML = `Min ${tempMin}° • Max ${tempMax}°`;
   document.querySelector("#current-conditions .features").innerHTML = `Humidity: ${humidity} % • Wind: ${wind} mph`;
   document.querySelector(".temperature .main-weather").innerHTML = weather;
@@ -121,7 +124,7 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  console.log(response.data.daily);
+  // console.log(response.data.daily);
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHTML += `
